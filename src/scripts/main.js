@@ -9,6 +9,8 @@ function Calcs(values) {
 
   let averageCalc = 0;
 
+  let validCount = 0;
+
   for (const value of values) {
     let text = value.innerText;
 
@@ -16,10 +18,14 @@ function Calcs(values) {
 
     const number = +text;
 
-    totalCalc = totalCalc + number;
+    if (!Number.isNaN(number)) {
+      totalCalc = totalCalc + number;
+
+      validCount++;
+    }
   }
 
-  averageCalc = Math.trunc(totalCalc / values.length);
+  averageCalc = Math.trunc(totalCalc / validCount);
 
   function toStringCommas(value) {
     let result = value.toString();
